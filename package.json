@@ -1,0 +1,29 @@
+{
+  "name": "raksha",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Raksha - women safety web app (PWA): anonymous reporting, safe circles, trip check-ins, expiring location share, SOS, evidence vault, event safety bubble.",
+  "type": "module",
+  "workspaces": [
+    "shared",
+    "server",
+    "web"
+  ],
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "dev": "concurrently -k -n server,web -c magenta,cyan \"npm run dev -w server\" \"npm run dev -w web\"",
+    "build": "npm run build -w web",
+    "start": "npm start -w server",
+    "seed": "npm run seed -w server",
+    "test": "vitest run",
+    "typecheck": "tsc -p shared --noEmit && tsc -p server --noEmit && tsc -p web --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "concurrently": "^9.1.0",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}
